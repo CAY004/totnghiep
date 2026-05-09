@@ -4,7 +4,10 @@
 @theme {
     --font-display: "Poppins", "sans-serif";
     --breakpoint-3xl: 1920px;
-    --color-primary: #875cf5
+    --color-primary: #8B5CF6;
+    --color-accent: #06B6D4;
+    --color-background: #0F172A;
+    --color-card: #1E293B;
 }
 
 @layer base {
@@ -12,32 +15,48 @@
         font-family: var(--font-display);
     }
 
-    body{
-        background-color: #fcfbfc;
+    body {
+        background-color: var(--color-background);
+        color: #E2E8F0;
         overflow-x: hidden;
     }
 }
 
 .input-box {
-    @apply w-full flex justify-between gap-3 text-sm text-black bg-slate-100 rounded px-4 py-3 mb-4 mt-3 border border-slate-200 outline-none;
+    @apply w-full flex justify-between gap-3 text-sm text-gray-200 bg-slate-800 rounded px-4 py-3 mb-4 mt-3 border border-slate-600 outline-none focus:border-primary;
 }
 
 .btn-primary {
-    @apply w-full text-sm font-medium text-white bg-violet-500 shadow-purple-600/5 p-[10px] rounded-md my-1 hover:bg-purple-600/15 hover:text-purple-600;
+    @apply w-full text-sm font-medium text-white bg-primary shadow-purple-600/5 p-[10px] rounded-md my-1 hover:bg-purple-600/15 hover:text-purple-600 transition-colors;
 }
 
 .card {
-    @apply bg-white p-6 rounded-2xl shadow-md shadow-gray-100 border border-gray-200/20;
+    @apply bg-card p-6 rounded-2xl shadow-md shadow-gray-900/20 border border-gray-700/20 backdrop-blur-sm;
 }
 
 .card-btn {
-    @apply flex items-center gap-3 text-[12px] font-medium text-gray-700 hover:text-purple-500 bg-gray-50 hover:bg-purple-50 px-4 py-1.5 rounded-lg border border-gray-200/50 cursor-pointer;
+    @apply flex items-center gap-3 text-[12px] font-medium text-gray-300 hover:text-accent bg-slate-800 hover:bg-slate-700 px-4 py-1.5 rounded-lg border border-gray-600/50 cursor-pointer transition-colors;
 }
 
 .add-btn {
-    @apply flex items-center gap-1.5 text-xs md:text-sm font-medium text-purple-600 whitespace-nowrap bg-purple-50 border border-purple-100 rounded-lg px-4 py-2 cursor-pointer;
+    @apply flex items-center gap-1.5 text-xs md:text-sm font-medium text-accent whitespace-nowrap bg-slate-800 border border-slate-600 rounded-lg px-4 py-2 cursor-pointer hover:bg-slate-700 transition-colors;
 }
 
 .add-btn-fill {
-    @apply text-white bg-primary
+    @apply text-white bg-primary hover:bg-purple-700;
+}
+
+/* Glassmorphism effect */
+.glass {
+    @apply backdrop-blur-md bg-white/10 border border-white/20;
+}
+
+/* Smooth animations */
+.animate-fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
